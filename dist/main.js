@@ -1,12 +1,29 @@
-
+gsap.fromTo('.js-cim', 2, {opacity: 0}, {opacity:1})
 const timeline1 = gsap.timeline();
 timeline1
-    .fromTo('.js-kep', .8, {opacity: 0, y:'-200%'}, {opacity:1, y:0})
-    .fromTo('.js-leiras', .8, {opacity: 0, x:'-200%'}, {opacity:1, x:0})
-    .fromTo('.js-introszoveg', .8, {opacity: 0, x:'-200%'}, {opacity:1, x:0})
-    .fromTo('.js-introkep', .8, {opacity: 0, y:200}, {opacity:1, y:0})
+  .fromTo('.js-kep', .8, {opacity: 0, x:'-200%'}, {opacity:1, x:0})
+  .fromTo('.js-leiras', .8, {opacity: 0, x:'200%'}, {opacity:1, x:0})
+  .fromTo('.js-introszoveg', .8, {opacity: 0, x:'-200%'}, {opacity:1, x:0})
+  .fromTo('.js-introkep', .8, {opacity: 0, x:200}, {opacity:1, x:0})
 
 gsap.registerPlugin(ScrollTrigger);
+
+gsap.fromTo(".js-nagysz", 
+  { y: 200 ,
+    opacity: 0
+  },
+  { 
+    delay: .5,
+    y: 0, 
+    opacity: 1,
+    duration: 2, 
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".js-first", 
+      toggleActions: "play none none none", 
+    }
+  }
+);
 
 gsap.fromTo(".js-gepsz1", 
     { x: -2000 }, 
@@ -38,12 +55,12 @@ gsap.fromTo(".js-gepsz1",
   gsap.fromTo(".js-gepsz2", 
     { x: 2000 }, 
     { 
-      delay: .9,
+      delay: .5,
       x: 0, 
       duration: 2, 
       ease: "power2.out",
       scrollTrigger: {
-        trigger: ".js-first", 
+        trigger: ".js-triggergep", 
         toggleActions: "play none none none", 
       }
     }
@@ -51,12 +68,12 @@ gsap.fromTo(".js-gepsz1",
   gsap.fromTo(".js-gepk2", 
     { x: 2000 }, 
     { 
-      delay: 1.1,
+      delay: .8,
       x: 0, 
       duration: 2, 
       ease: "power2.out",
       scrollTrigger: {
-        trigger: ".js-first", 
+        trigger: ".js-triggergep", 
         toggleActions: "play none none none", 
       }
     }
@@ -64,17 +81,21 @@ gsap.fromTo(".js-gepsz1",
 
   const timeline2 = gsap.timeline({
     scrollTrigger: {
-      trigger: ".js-trigger1",
+      trigger: ".js-trigger",
       toggleActions: "play none none none"
     }
   });
   
   timeline2
     .fromTo(".js-nulla", 
-      { y: 2000 }, 
+      { y: 200,
+        opacity: 0
+      }, 
       { 
+        delay: 0.6,
+        opacity: 1,
         y: 0, 
-        duration: 2, 
+        duration: 1, 
         ease: "power2.out" 
       }
     )
